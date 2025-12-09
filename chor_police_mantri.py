@@ -3,7 +3,7 @@ def rolls():
     num = int(input('Enter number of players '))
 
     while True:
-        if num <= 2:
+        if num <= 2 and num > 8 :
             num = int(input('Enter number of players '))
 
         else:
