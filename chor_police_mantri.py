@@ -84,15 +84,15 @@ def rolls():
                             choose = []
                             while True:
                                 choose.append(input('Enter your choice '))
-                                print(choose)
-                                print(player)
+                                # print(choose)
+                                # print(player)
                                 while True:
                                     if choose[0] in player:
-                                        print(choose)
-                                        print(player)
+                                        # print(choose)
+                                        # print(player)
                                         break
                                     else:
-                                        print(choose)
+                                        # print(choose)
 
                                         choose.clear()
 
