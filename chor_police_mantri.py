@@ -1,8 +1,15 @@
 import random
 def rolls():
     num = int(input('Enter number of players '))
+
+    while True:
+        if num <= 2:
+            num = int(input('Enter number of players '))
+
+        else:
+            break
     players = {}
-    t_naam = []
+
     t_kaam = {}
     roll = {
         "chor" : 0,
@@ -15,29 +22,29 @@ def rolls():
         "aam_nagarik" : 25
     }
     choice = list(roll.keys())
-    print(choice)
+
     sum = 0
 
     temp = {}
     naam = []
     kaam = []
+    num = num - 1
     for i in range(0, num + 1):
         name = input('Enter player name ')
         players.update({name: ""})
-    print(players)
+
     player = list(players.keys())
     for p in player:
         if p not in t_kaam.keys():
             t_kaam.update({p: ''})
-            print(t_kaam[p], "is list1")
+
 
 
 
     con = True
     while con:
 
-        print(choice)
-        print(player,"suffled")
+
 
         while con:
             random.shuffle(player)
@@ -46,25 +53,22 @@ def rolls():
                 val = players[player[i]]
                 ch = choice[i]+val+" "
                 players.update({player[i]: ch })
-                print(f'here id there player: {players}')
-                print(ch,' ch is here')
+
                 if(i==1):
                  print(f"{player[i]} is police please enter you friend name who you think he/she might be chor")
                 if(ch=="chor " or ch == "police "):
                     temp.update({player[i]: ch})
 
-                print(players)
+
                 tempo = list(temp.keys())
-                print(f"{tempo} is tempo")
-                print(f"{temp} is tempo")
+
 
 
 
                 if i==num:
-                    print(f" is bigto")
+
                     for j in tempo:
-                        print(f"{j} is bigto")
-                        print(f" is to")
+
                         if(players[j] == 'chor ' or players[j] == 'police '):
                             naam.append(j)
                             kaam.append(temp[j])
@@ -75,17 +79,29 @@ def rolls():
                                 if(players[k] == 'police '):
                                     continue
                                 else:
-                                    print(f'{players[k]}''')
-                                    print(f'{k}')
+
+                                    print(f'player : {k}')
                             choose = []
                             while True:
                                 choose.append(input('Enter your choice '))
-                                print(players[choose[0]], "is choose")
-                                print(players[naam[0]], " is choose")
+                                print(choose)
+                                print(player)
+                                while True:
+                                    if choose[0] in player:
+                                        print(choose)
+                                        print(player)
+                                        break
+                                    else:
+                                        print(choose)
+
+                                        choose.clear()
+
+                                print("you choose ",players[choose[0]])
+
 
                                 if (players[choose[0]] == players[naam[0]]):
                                     choose.clear()
-                                    print("sussy")
+
                                     break
 
                                 elif players[choose[0]] == players[naam[1]]:
@@ -101,23 +117,40 @@ def rolls():
                             choose.clear()
 
 
-
+            temp.clear()
 
             for p in player:
-                print(temp)
+
                 if p in t_kaam.keys():
                     t_kaam[p] = t_kaam[p] + players[p]
-            print(t_kaam)
+
             kaam.clear()
             naam.clear()
             choose.clear()
             for z in players.keys():
                 players[z] = ''
             # random.shuffle(player)
-            v = input("Enter your choice ")
+            v = input("Press e to 'exit' ")
             if(v == 'e'):
                 con = False
                 con = False
+
+    final_naam = list(t_kaam.keys())
+    final_kaam = []
+    a=[]
+    for i in players.keys():
+        final_kaam.append(t_kaam[i])
+
+        final_kaam[0].rstrip()
+        a = final_kaam[0].split(' ')
+        a.pop(-1)
+        for j in a:
+            sum += roll[j]
+        print(f"the score of {i} is {sum}")
+        sum = 0
+
+        a.clear()
+        final_kaam.clear()
 
 
 
